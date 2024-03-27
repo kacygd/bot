@@ -20,11 +20,10 @@ class aclient(Client):
         if not self.synced:
             await tree.sync()
             self.synced = True
-        await thumbnails_delete.start()
         print(f"Logged in as {self.user}.")
         await client.change_presence(activity=Activity(type=ActivityType.playing, name="PlusGDPS"))
-        log(f"(SUCCESS) {self.user} has been STARTED. Ping: {round (client.latency * 1000)} ms")
-        
+        log(f"(SUCCESS) {self.user} has been STARTED. Ping: {round(client.latency * 1000)} ms")
+        await thumbnails_delete.start()
 
 client = aclient()
 tree = CommandTree(client)
@@ -47,6 +46,7 @@ for command in listdir("context_menu"):
 
 @tasks.loop(minutes=1)
 async def thumbnails_delete():
+    print("test")
     file_array = listdir("thumbnails")
     for file in file_array:
         file_path = f"thumbnails/{file}"
@@ -55,5 +55,5 @@ async def thumbnails_delete():
         if difference > timedelta(day=1):
             log(f"(CLEANUP) DELETED thumbnail #{file_path}")
             remove(file_path)
-            
+
 client.run(TOKEN)
