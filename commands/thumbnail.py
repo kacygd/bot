@@ -4,7 +4,6 @@ from util.functions import log
 from json import load
 from requests import get, post
 from datetime import datetime
-from os import listdir, path
 from json import dump
 
 def commandFunction(tree, client):
@@ -16,6 +15,7 @@ def commandFunction(tree, client):
             server = data["server"]
             databaseUrl = data["databaseUrl"]
             thumbnailsChannel = data["thumbnailsChannel"]
+            verifiedThumbnailerRole = data["verifiedThumbnailerRole"]
         
         with open("thumbnails.json", "r") as thumbnailsFile:
             thumbnailsData = load(thumbnailsFile)
@@ -27,7 +27,7 @@ def commandFunction(tree, client):
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not allowed)")
             return
 
-        if thumbnailsChannel == 0:
+        if thumbnailsChannel == 0 or verifiedThumbnailerRole == 0:
             embed = Embed(title=" ",description="**:x: This command has not yet been configured.**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not configured)")
@@ -87,15 +87,11 @@ def commandFunction(tree, client):
                     if value == "2":
                         levelAuthor = sections[1].split(':')[sections[1].split(':').index(value) + 1]
 
-                    #levelName = req.text[req.text.find('2:')+1:]
-                    #levelAuthor = req.text[req.text.find('#2:')+1:]
-
-                print(req.text)
-                print(levelName)
-                print(levelAuthor)
-
             except:
-                print("xd")
+                embed = Embed(title=" ",description="**:x: Failed to fetch the level from the servers**",colour=15548997)
+                await interaction.response.send_message(" ",embed=embed, ephemeral=True)
+                log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (failed to fetch the level from the servers)")
+                return
 
             try:
                 with open(f"thumbnails/{level}.png", "wb") as f:
@@ -111,14 +107,14 @@ def commandFunction(tree, client):
                 log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (error when saving the image/writting in the json file)")
                 return
 
-            embed = Embed(title=f"ID: {level}",description=f"By <@{interaction.user.id}> ({interaction.user.id})")
+            embed = Embed(title=f"{levelName} by {levelAuthor} ({level})",description=f"By <@{interaction.user.id}> ({interaction.user.id})")
             embed.set_image(url=f"{image.url}")
             embed.set_footer(text=f"{client.user.name}", icon_url=f"{client.user.avatar}")
             embed.timestamp = datetime.now()
 
             try:
                 channel = client.get_channel(thumbnailsChannel)
-                await channel.send(" ",embed=embed)
+                await channel.send(f"<@&{verifiedThumbnailerRole}>",embed=embed)
                 embed = Embed(title=" ",description="**:white_check_mark: Successfully posted a thumbnail!**",colour=2067276)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(SUCCESS) {interaction.user} POSTED a thumbnail")  
