@@ -1,5 +1,4 @@
 from discord import Interaction, Embed, Attachment
-from discord.app_commands import default_permissions
 from util.functions import log
 from json import load
 from requests import get, post
@@ -7,8 +6,7 @@ from datetime import datetime
 from json import dump
 
 def commandFunction(tree, client):
-    @tree.command(name="thumbnail",description="Submit a thumbnail for an in-game level", )
-    @default_permissions(administrator=True)
+    @tree.command(name="thumbnail",description="Submit a thumbnail for an in-game level")
     async def thumbnailCommand(interaction: Interaction, level: int, image: Attachment):
         with open("specialConfig.json", "r") as specialConfigFile:
             data = load(specialConfigFile)
