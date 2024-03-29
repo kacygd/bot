@@ -80,6 +80,9 @@ def commandFunction(tree, client):
                 log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (failed to fetch the level from the servers)")
                 return
 
+            levelName = "Unknown"
+            levelAuthor = "Unknown"
+
             sections = req.text.split('#')
 
             for value in sections[0].split(':'):
