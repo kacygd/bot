@@ -1,4 +1,0 @@
-[27/03/2024 14:58:24] (FAILED) maitregeek FAILED to change the server (not allowed)
-[27/03/2024 14:58:48] (FAILED) maitregeek FAILED to change the database URL (not allowed)
-[27/03/2024 15:06:30] (FAILED) maitregeek FAILED to change the server (not allowed)
-[27/03/2024 15:11:00] (SUCCESS) MeowZIC#1486 has been STARTED. Ping: 156 ms
