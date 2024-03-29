@@ -1,5 +1,4 @@
 from discord import Interaction, Embed, Message
-from discord.app_commands import default_permissions
 from util.functions import log
 from modals.rejectThumbnail import rejectThumbnailForm
 from json import load

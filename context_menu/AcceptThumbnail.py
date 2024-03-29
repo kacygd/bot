@@ -1,5 +1,4 @@
 from discord import Interaction, Embed, Message
-from discord.app_commands import default_permissions
 from util.functions import log
 from modals.acceptThumbnail import acceptThumbnailForm
 from json import load
@@ -7,7 +6,6 @@ from os import listdir
 
 def commandFunction(tree, client):
     @tree.context_menu(name="Accept Thumbnail")
-    @default_permissions(manage_messages=True)
     async def acceptThumbnail(interaction:Interaction, message: Message):
         with open("specialConfig.json", "r") as specialConfigFile:
             specialConfig = load(specialConfigFile)

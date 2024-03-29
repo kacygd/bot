@@ -1,12 +1,10 @@
-from discord import Client, Intents, ActivityType, Embed, Activity
+from discord import Client, Intents, ActivityType, Activity
 from discord.app_commands import CommandTree
 from util.resources import TOKEN
 from util.functions import log 
 from os import listdir, remove
 from os.path import isfile, join, getmtime
 from discord.ext import tasks
-from random import choice
-from json import load, dump
 from datetime import datetime, timedelta
 
 class aclient(Client):
@@ -52,7 +50,7 @@ async def thumbnails_delete():
         last_created = datetime.fromtimestamp(getmtime(file_path))
         difference = datetime.now() - last_created
         if difference > timedelta(days=1):
-            log(f"(CLEANUP) DELETED thumbnail #{file_path}")
+            log(f"(CLEANUP) DELETED thumbnail '{file_path}'")
             remove(file_path)
             
 client.run(TOKEN)
