@@ -62,34 +62,33 @@ def commandFunction(tree, client):
             return
             
         else:
-            try:
-                headers = {
-                    "User-Agent": ""
-                }
+            headers = {
+                "User-Agent": ""
+            }
 
-                data = {
-                    "str": level,
-                    "type": 0,
-                    "secret": "Wmfd2893gb7"
-                }
+            data = {
+                "str": level,
+                "type": 0,
+                "secret": "Wmfd2893gb7"
+            }
 
-                req = post(url=f"{databaseUrl}/getGJLevels21.php", data=data, headers=headers)
+            req = post(url=f"{databaseUrl}/getGJLevels21.php", data=data, headers=headers)
 
-                sections = req.text.split('#')
-
-                for value in sections[0].split(':'):
-                    if value == "2":
-                        levelName = sections[0].split(':')[sections[0].split(':').index(value) + 1]
-
-                for value in sections[1].split(':'):
-                    if value == "2":
-                        levelAuthor = sections[1].split(':')[sections[1].split(':').index(value) + 1]
-
-            except:
+            if req.status_code != 200:
                 embed = Embed(title=" ",description="**:x: Failed to fetch the level from the servers**",colour=15548997)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (failed to fetch the level from the servers)")
                 return
+
+            sections = req.text.split('#')
+
+            for value in sections[0].split(':'):
+                if value == "2":
+                    levelName = sections[0].split(':')[sections[0].split(':').index(value) + 1]
+
+            for value in sections[1].split(':'):
+                if value == "2":
+                    levelAuthor = sections[1].split(':')[sections[1].split(':').index(value) + 1]
 
             try:
                 with open(f"thumbnails/{level}.png", "wb") as f:
