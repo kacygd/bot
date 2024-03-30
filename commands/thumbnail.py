@@ -4,6 +4,7 @@ from json import load
 from requests import get, post
 from datetime import datetime
 from json import dump
+from PIL import Image
 
 def commandFunction(tree, client):
     @tree.command(name="thumbnail",description="Submit a thumbnail for an in-game level")
@@ -42,15 +43,15 @@ def commandFunction(tree, client):
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not a .png file)")
             return
-
+        
+        if image.width < 1920 or image.height < 1080:
+            embed = Embed(title=" ",description="**:x: This image is under 1920x1080!**",colour=15548997)
+            await interaction.response.send_message(" ",embed=embed, ephemeral=True)
+            log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not above 1920x1080)")
+            return
+        
         if (image.width / image.height) < (16 / 9):
             embed = Embed(title=" ",description="**:x: This image is not 16:9!**",colour=15548997)
-            await interaction.response.send_message(" ",embed=embed, ephemeral=True)
-            log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not 16:9)")
-            return
-            
-        if image.width > 1920 or image.height > 1080:
-            embed = Embed(title=" ",description="**:x: This image is not 1920x1080!**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not 16:9)")
             return
@@ -106,6 +107,11 @@ def commandFunction(tree, client):
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (error when saving the image/writting in the json file)")
                 return
+            
+            if image.width > 1920 and image.height > 1080:
+                resizedImage = Image.open(f"thumbnails/{level}.png")
+                resizedImage = resizedImage.resize((1920, 1080))
+                resizedImage.save(f"thumbnails/{level}.png")
 
             embed = Embed(title=f"{levelName} by {levelAuthor} ({level})",description=f"By <@{interaction.user.id}> ({interaction.user.id})")
             embed.set_image(url=f"{image.url}")

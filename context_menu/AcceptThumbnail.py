@@ -9,6 +9,9 @@ def commandFunction(tree, client):
     async def acceptThumbnail(interaction:Interaction, message: Message):
         with open("specialConfig.json", "r") as specialConfigFile:
             specialConfig = load(specialConfigFile)
+        with open("thumbnails.json", "r") as thumbnailsFile:
+            thumbnailsData = load(thumbnailsFile)
+            thumbnails = thumbnailsData.get("thumbnails", [])
 
         files = listdir("thumbnails")
 
@@ -34,6 +37,12 @@ def commandFunction(tree, client):
             log(f"(FAILED) {interaction.user} FAILED to accept a thumbnail (wrong message)")
             return
         
+        if not old_embed.title[old_embed.title.rfind('(')+1:old_embed.title.rfind(')')].isdigit():
+            embed = Embed(title=" ",description="**:x: Invalid message!**",colour=15548997)
+            await interaction.response.send_message(" ",embed=embed, ephemeral=True)
+            log(f"(FAILED) {interaction.user} FAILED to accept a thumbnail (invalid message)")
+            return
+        
         if not old_embed.description[old_embed.description.rfind('(')+1:old_embed.description.rfind(')')].isdigit():
             embed = Embed(title=" ",description="**:x: Invalid message!**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
@@ -56,6 +65,12 @@ def commandFunction(tree, client):
             embed = Embed(title=" ",description="**:x: This submission has already been accepted!**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to accept a thumbnail (already accepted)")
+            return
+
+        if int(old_embed.title[old_embed.title.rfind('(')+1:old_embed.title.rfind(')')]) not in thumbnails:
+            embed = Embed(title=" ",description="**:x: This submission does not exist!**",colour=15548997)
+            await interaction.response.send_message(" ",embed=embed, ephemeral=True)
+            log(f"(FAILED) {interaction.user} FAILED to accept a thumbnail (does not exist)")
             return
         
         if f"{old_embed.title[old_embed.title.rfind('(')+1:old_embed.title.rfind(')')]}.png" not in files:
