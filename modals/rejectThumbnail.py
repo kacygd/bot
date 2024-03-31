@@ -77,7 +77,7 @@ class rejectThumbnailForm(Modal, title='Reject Thumbnail'):
             
                 embed = Embed(title=old_embed.title, description=f'{old_embed.description}', color=15548997)
                 embed.set_image(url=old_embed.image.url)
-                embed.set_footer(text=f"{self.client.user.name}", icon_url=f"{self.client.avatar}")
+                embed.set_footer(text=f"{self.client.user.name}", icon_url=f"{self.client.user.avatar}")
                 embed.timestamp = old_embed.timestamp
 
                 try:
