@@ -6,6 +6,7 @@ from requests import put
 from util.resources import GITHUB_TOKEN
 from json import dumps
 from base64 import b64encode
+from datetime import datetime
 
 class acceptThumbnailForm(Modal, title='Accept Thumbnail'):
     def __init__(self, client, message):
@@ -45,6 +46,9 @@ class acceptThumbnailForm(Modal, title='Accept Thumbnail'):
                 return
             
             embed = Embed(title=f"**Your thumbnail submission (ID: ``{levelID}``) was accepted!**",description="", colour=2067276)
+            embed.set_image(url=old_embed.image.url)
+            embed.set_footer(text=f"{self.client.user.name}", icon_url=f"{self.client.user.avatar}")
+            embed.timestamp = datetime.now()
 
             try:
                 await submissionAuthor.send(" ",embed=embed)
@@ -87,6 +91,9 @@ class acceptThumbnailForm(Modal, title='Accept Thumbnail'):
                 return
             
             embed = Embed(title=f"**Your thumbnail submission (ID: ``{levelID}``) was accepted!**\n``Additional notes: {self.input_0.value}``",description="", colour=2067276)
+            embed.set_image(url=old_embed.image.url)
+            embed.set_footer(text=f"{self.client.user.name}", icon_url=f"{self.client.user.avatar}")
+            embed.timestamp = datetime.now()
 
             try:
                 await submissionAuthor.send(" ",embed=embed)
