@@ -3,9 +3,10 @@ from discord.app_commands import CommandTree
 from util.resources import TOKEN
 from util.functions import log 
 from os import listdir, remove
-from os.path import isfile, join, getmtime
+from os.path import isfile, join, getmtime, splitext
 from discord.ext import tasks
 from datetime import datetime, timedelta
+from json import dump, load
 
 class aclient(Client):
     def __init__(self):
@@ -44,13 +45,22 @@ for command in listdir("context_menu"):
 
 @tasks.loop(minutes=1)
 async def thumbnails_delete():
+    with open("thumbnails.json", "r") as thumbnailsFile:
+        thumbnailsData = load(thumbnailsFile)
+        thumbnails = thumbnailsData.get("thumbnails", [])
     file_array = listdir("thumbnails")
     for file in file_array:
         file_path = f"thumbnails/{file}"
+        base, extension = splitext(file)
         last_created = datetime.fromtimestamp(getmtime(file_path))
         difference = datetime.now() - last_created
         if difference > timedelta(days=1):
-            log(f"(CLEANUP) DELETED thumbnail '{file_path}'")
             remove(file_path)
+            thumbnails.remove(int(base))
+            json_dict = {"thumbnails": thumbnails}
+            with open("thumbnails.json", "w") as thumbnailsFile:
+                dump(json_dict, thumbnailsFile, indent=4)
+
+            log(f"(CLEANUP) DELETED thumbnail '{base}'")
             
 client.run(TOKEN)
