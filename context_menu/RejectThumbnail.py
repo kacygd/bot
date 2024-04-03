@@ -70,6 +70,11 @@ def commandFunction(tree, client):
         if int(old_embed.title[old_embed.title.rfind('(')+1:old_embed.title.rfind(')')]) not in thumbnails:
             embed = Embed(title=" ",description="**:x: This submission does not exist!**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
+            embed = Embed(title=old_embed.title, description=f'{old_embed.description}', color=15548997)
+            embed.set_image(url=old_embed.image.url)
+            embed.set_footer(text=f"{client.user.name}", icon_url=f"{client.user.avatar}")
+            embed.timestamp = old_embed.timestamp
+            await message.edit(embed=embed)
             log(f"(FAILED) {interaction.user} FAILED to accept a thumbnail (does not exist)")
             return
 
