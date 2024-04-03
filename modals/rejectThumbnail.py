@@ -31,7 +31,7 @@ class rejectThumbnailForm(Modal, title='Reject Thumbnail'):
             try:
                 await submissionAuthor.send(" ",embed=embed)
             except:
-                embed = Embed(title=f"**Your thumbnail submission (ID: ``{levelID}``) was rejected!**",description="", colour=15548997)
+                pass
             embed = Embed(title=" ",description=f"**``{levelID}`` has been rejected!**", colour=5763719)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(SUCCESS) {interaction.user} REJECTED thumbnail ID {levelID}")
@@ -76,7 +76,10 @@ class rejectThumbnailForm(Modal, title='Reject Thumbnail'):
             embed.set_image(url=old_embed.image.url)
             embed.set_footer(text=f"{self.client.user.name}", icon_url=f"{self.client.user.avatar}")
             embed.timestamp = datetime.now()
-            await submissionAuthor.send(" ",embed=embed)
+            try:
+                await submissionAuthor.send(" ",embed=embed)
+            except:
+                pass
             embed = Embed(title=" ",description=f"**``{levelID}`` has been rejected!**", colour=5763719)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             

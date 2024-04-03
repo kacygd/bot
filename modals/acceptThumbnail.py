@@ -53,7 +53,7 @@ class acceptThumbnailForm(Modal, title='Accept Thumbnail'):
             try:
                 await submissionAuthor.send(" ",embed=embed)
             except:
-                embed = Embed(title=f"**Your thumbnail submission (ID: ``{levelID}``) was accepted!**",description="", colour=2067276)
+                pass
             embed = Embed(title=" ",description=f"**``{levelID}`` has been accepted!**", colour=5763719)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
 
@@ -98,7 +98,7 @@ class acceptThumbnailForm(Modal, title='Accept Thumbnail'):
             try:
                 await submissionAuthor.send(" ",embed=embed)
             except:
-                embed = Embed(title=f"**Your thumbnail submission (ID: ``{levelID}``) was accepted!**",description="", colour=2067276)
+                pass
             embed = Embed(title=" ",description=f"**``{levelID}`` has been accepted!**", colour=5763719)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
 
