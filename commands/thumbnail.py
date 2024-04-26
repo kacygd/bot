@@ -5,10 +5,12 @@ from requests import get, post
 from datetime import datetime
 from json import dump
 from PIL import Image
+from util.translate import get_language, translate
 
 def commandFunction(tree, client):
     @tree.command(name="thumbnail",description="Submit a thumbnail for an in-game level")
     async def thumbnailCommand(interaction: Interaction, level: int, image: Attachment):
+        lang = get_language(interaction.user.id)
         with open("specialConfig.json", "r") as specialConfigFile:
             data = load(specialConfigFile)
             server = data["server"]
@@ -21,41 +23,41 @@ def commandFunction(tree, client):
             thumbnails = thumbnailsData.get("thumbnails", [])
 
         if interaction.guild.id != server:
-            embed = Embed(title=" ",description="**:x: You are not allowed to use this here!**",colour=15548997)
+            embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.not_here", lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not allowed)")
             return
 
         if thumbnailsChannel == None or thumbnailsChannel == 0 or verifiedThumbnailerRole == 0:
-            embed = Embed(title=" ",description="**:x: This command has not yet been configured.**",colour=15548997)
+            embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.config", lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not configured)")
             return
   
         if not image.filename.endswith(".png"):
-            embed = Embed(title=" ",description="**:x: This image is not a .png file!**",colour=15548997)
+            embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.image.not_png", lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not a .png file)")
             return
         if image.width == None or image.height == None:
-            embed = Embed(title=" ",description="**:x: Malformed image**",colour=15548997)
+            embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.image.malformed", lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (malformed)")
             return
         if image.width < 1920 or image.height < 1080:
-            embed = Embed(title=" ",description="**:x: This image is under 1920x1080!**",colour=15548997)
+            embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.image.under_1920x1080", lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not above 1920x1080)")
             return
         
         if abs((image.width / image.height) - (16 / 9)) > 0.01: #tolerance value, width can be 16/9 * height ± tolerance * height
-            embed = Embed(title=" ",description="**:x: This image is not 16:9!**",colour=15548997)
+            embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.image.not_19b6", lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not 16:9)")
             return
 
         if level in thumbnails:
-            embed = Embed(title=" ",description="**:x: A thumbnail for this level has already been suggested!**",colour=15548997)
+            embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.thumb.already_suggested", lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (already suggested)")
             return
@@ -74,7 +76,7 @@ def commandFunction(tree, client):
             req = post(url=f"{databaseUrl}/getGJLevels21.php", data=data, headers=headers)
 
             if req.status_code != 200:
-                embed = Embed(title=" ",description="**:x: Failed to fetch the level from the servers**",colour=15548997)
+                embed = Embed(title=" ",description=f"**:x: {translate("error.server.fetch_level_fail", lang)}**",colour=15548997)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (failed to fetch the level from the servers)")
                 return
@@ -91,7 +93,7 @@ def commandFunction(tree, client):
                 with open("thumbnails.json", "w") as thumbnailsFile:
                     dump(json_dict, thumbnailsFile, indent=4)
             except:
-                embed = Embed(title=" ",description="**:x: An error occured**",colour=15548997)
+                embed = Embed(title=" ",description=f"**:x: {translate("error.generic", lang)}**",colour=15548997)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (error when saving the image/writting in the json file)")
                 return
@@ -109,12 +111,12 @@ def commandFunction(tree, client):
             try:
                 channel = client.get_channel(thumbnailsChannel)
                 await channel.send(f"<@&{verifiedThumbnailerRole}>",embed=embed)
-                embed = Embed(title=" ",description="**:white_check_mark: Successfully posted a thumbnail!**",colour=2067276)
+                embed = Embed(title=" ",description=f"**:white_check_mark: {translate("cmd.thumb.success", lang)}**",colour=2067276)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(SUCCESS) {interaction.user} POSTED a thumbnail")  
 
             except:
-                embed = Embed(title=" ",description="**:x: An error occured**",colour=15548997)
+                embed = Embed(title=" ",description=f"**:x: {translate("error.generic", lang)}**",colour=15548997)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (could not post in the channel/could not reply)")
                 return

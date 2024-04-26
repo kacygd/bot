@@ -1,5 +1,5 @@
 # PlusGDPS Bot
-This is the official repository for the Discord bot that we use for thumbnails and other stuffs on PlusGDPS.
+This is the official repository for the Discord bot that we use for thumbnails and other stuff on PlusGDPS.
 
 ## Can I use this?
 Sure, go ahead. Make sure you credits us and explicitly say that you are not affiliated with us though.

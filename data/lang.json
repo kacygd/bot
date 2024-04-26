@@ -1,0 +1,65 @@
+{
+    "en_uk": {
+        "icon": "🇬🇧",
+        "name": "English (UK)",
+
+        "lang.select.title": "Language Select",
+        "lang.select.current": "Your current language is:",
+        "lang.select.below": "Click the buttons below to select a different one",
+        "thumb.accept.title": "Accept Thumbnail",
+        "thumb.reject.title": "Reject Thumbnail",
+        "thumb.reject.reason": "Rejection Reason",
+        "thumb.reject.reason.placeholder": "Explain why the thumbnail was rejected (optional)",
+        "thumb.submission": "Your thumbnail submission",
+
+        "w.notes": "Notes",
+        "w.reason": "Reason:",
+        "w.notes.add": "Additional notes:",
+        "w.notes.additional": "Any additional notes?",
+        "w.accept.pastp": "has been accepted!",
+        "w.reject.pastp": "has been rejected!",
+
+        "error.generic": "An error occured",
+        "error.no_permission": "You are not allowed to use this!",
+        "error.url.invalid": "Invalid URL!",
+        "error.msg.invalid": "Invalid message!",
+        "error.server.fetch_level_fail": "Failed to fetch the level from the server!",
+        "error.server.accept_thumb": "An error occurred while trying to post the thumbnail",
+        "cmd.error.not_here": "You are not allowed to use this here!",
+        "cmd.error.config": "This command has not yet been configured!",
+        "cmd.error.thumb.already_suggested": "A thumbnail for this level has already been suggested!",
+        "cmd.error.image.not_png": "This image is not a .png file!",
+        "cmd.error.image.malformed": "Malformed Image!",
+        "cmd.error.image.under_1920x1080": "Resolution below 1920x1080!",
+        "cmd.error.image.not_19b6": "This image is not 19:6!",
+        "cmd.error.server.same": "This is the same server!",
+        "cmd.error.role.same": "This is the same role!",
+        "cmd.error.url.same": "This is the same URL!",
+        "cmd.error.channel.same": "This is the same channel!",
+        "cmd.error.channel.none": "Please select atleast one channel!",
+        "cmd.error.channel.two": "Please only select one channel",
+        "context.error.not_by_bot": "This is not a message sent by the bot!",
+        "context.error.already_rejected": "This submission has already been rejected!",
+        "context.error.already_accepted": "This submission has already been accepted!",
+        "context.error.submission.nonexist": "This submission does not exist!",
+        "context.error.submission.expire": "This submission has expired!",
+
+        "cmd.thumb.success": "Successfully posted a thumbnail!",
+        "cmd.server.success": "Successfully set the new server to",
+        "cmd.thumb_role.success": "Successfully set the new Verified Thumbnailer role to",
+        "cmd.thumb_channel.success": "Successfully set the new thumbnail channel to",
+        "cmd.data_url.success": "Successfully set the new database URL to"
+    },
+    "fr_fr": {
+        "icon": "🇫🇷",
+        "name": "Français (FR)"
+    },
+    "ru_ru": {
+        "icon": "🇷🇺",
+        "name": "Русский"
+    },
+    "ua_ua": {
+        "icon": "🇺🇦",
+        "name": "українська"
+    }
+}
