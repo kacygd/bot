@@ -26,13 +26,7 @@ def commandFunction(tree, client):
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not allowed)")
             return
 
-        if thumbnailsChannel == 0 or verifiedThumbnailerRole == 0:
-            embed = Embed(title=" ",description="**:x: This command has not yet been configured.**",colour=15548997)
-            await interaction.response.send_message(" ",embed=embed, ephemeral=True)
-            log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not configured)")
-            return
-
-        if thumbnailsChannel == None:
+        if thumbnailsChannel == None or thumbnailsChannel == 0 or verifiedThumbnailerRole == 0:
             embed = Embed(title=" ",description="**:x: This command has not yet been configured.**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not configured)")
@@ -43,21 +37,25 @@ def commandFunction(tree, client):
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not a .png file)")
             return
-        
+        if image.width == None or image.height == None:
+            embed = Embed(title=" ",description="**:x: Malformed image**",colour=15548997)
+            await interaction.response.send_message(" ",embed=embed, ephemeral=True)
+            log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (malformed)")
+            return
         if image.width < 1920 or image.height < 1080:
             embed = Embed(title=" ",description="**:x: This image is under 1920x1080!**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not above 1920x1080)")
             return
         
-        if (image.width / image.height) < (16 / 9):
+        if abs((image.width / image.height) - (16 / 9)) > 0.01: #tolerance value, width can be 16/9 * height ± tolerance * height
             embed = Embed(title=" ",description="**:x: This image is not 16:9!**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (not 16:9)")
             return
 
         if level in thumbnails:
-            embed = Embed(title=" ",description="**:x: This thumbnail has already been suggested!**",colour=15548997)
+            embed = Embed(title=" ",description="**:x: A thumbnail for this level has already been suggested!**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (already suggested)")
             return
