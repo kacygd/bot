@@ -15,25 +15,25 @@ def commandFunction(tree, client):
             lang = get_language(interaction.user.id)
         
             if interaction.guild.id != server:
-                embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.not_here", lang)}**",colour=15548997)
+                embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.not_here', lang)}**",colour=15548997)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to change the database URL (not allowed)")
                 return
             
             if channel is None and thread is None:
-                embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.channel.none")}**",colour=15548997)
+                embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.channel.none')}**",colour=15548997)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to change the thumbnail channel (no channels selected)")
                 return
 
             if (channel is not None and channel.id == thumbnailChannel) or (thread is not None and thread.id == thumbnailChannel):
-                embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.channel.same", lang)}**",colour=15548997)
+                embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.channel.same', lang)}**",colour=15548997)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to change the thumbnail channel (already set)")
                 return
             
             if channel is not None and thread is not None:
-                embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.channel.two", lang)}**",colour=15548997)
+                embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.channel.two', lang)}**",colour=15548997)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to change the thumbnail channel (two channels)")
                 return
@@ -48,10 +48,10 @@ def commandFunction(tree, client):
                 try:
                     with open("specialConfig.json", "w") as specialConfigFile:
                         dump(data, specialConfigFile, indent=4)
-                    embed = Embed(title=" ",description=f"**:white_check_mark: {translate("cmd.thumb_channel.success", lang)}** <#{thumbnailChannel}>!",colour=2067276)
+                    embed = Embed(title=" ",description=f"**:white_check_mark: {translate('cmd.thumb_channel.success', lang)}** <#{thumbnailChannel}>!",colour=2067276)
                     await interaction.response.send_message(" ",embed=embed)
                     log(f"(SUCCESS) Thumbnail Channel has been CHANGED")
                 except:
-                    embed = Embed(title=" ",description=f"**:x: {translate("error.generic", lang)}**",colour=15548997)
+                    embed = Embed(title=" ",description=f"**:x: {translate('error.generic', lang)}**",colour=15548997)
                     await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                     log(f"(FAILED) {interaction.user} FAILED to change the thumbnail channel (error when writing in specialConfig.json/when sending the success embed)")

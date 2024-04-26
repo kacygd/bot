@@ -11,9 +11,9 @@ class rejectThumbnailForm(Modal):
         self.client = client
         self.message = message
         self.lang = lang
-        self.input_0.label = translate("thumb.reject.reason", lang)
-        self.input_0.placeholder = translate("thumb.reject.reason.placeholder", lang)
-        super().__init__(title=translate("thumb.reject.title", lang))
+        self.input_0.label = translate('thumb.reject.reason', lang)
+        self.input_0.placeholder = translate('thumb.reject.reason.placeholder', lang)
+        super().__init__(title=translate('thumb.reject.title', lang))
     input_0 = TextInput(label="",style=TextStyle.long, required=False)
     async def on_submit(self, interaction: Interaction):
         with open("thumbnails.json", "r") as thumbnailsFile:
@@ -34,8 +34,8 @@ class rejectThumbnailForm(Modal):
         else:
             auth_lang = get_language(submissionAuthor.id)
         add = ""
-        if has_reason: add = f"\n``{translate("w.reason", auth_lang)} {self.input_0.value}``"
-        embed = Embed(title=f"**{translate("thumb.submission", auth_lang)} (ID: ``{levelID}``) {translate("w.reject.pastp", auth_lang)}**" + add,description="", colour=15548997)
+        if has_reason: add = f"\n``{translate('w.reason', auth_lang)} {self.input_0.value}``"
+        embed = Embed(title=f"**{translate('thumb.submission', auth_lang)} (ID: ``{levelID}``) {translate('w.reject.pastp', auth_lang)}**" + add,description="", colour=15548997)
         embed.set_image(url=old_embed.image.url)
         embed.set_footer(text=f"{self.client.user.name}", icon_url=f"{self.client.user.avatar}")
         embed.timestamp = datetime.now()
@@ -52,7 +52,7 @@ class rejectThumbnailForm(Modal):
         try:
             await message.edit(embed=embed)
         except:
-            embed = Embed(title=" ",description=f":x: **{translate("error.generic", self.lang)}**", colour=15548997)
+            embed = Embed(title=" ",description=f":x: **{translate('error.generic', self.lang)}**", colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAIL) {interaction.user} failed to use the reject thumbnail form (could not edit the message)")
             return
@@ -63,7 +63,7 @@ class rejectThumbnailForm(Modal):
                 if file_path == f"thumbnails/{levelID}.png":
                     remove(file_path)
         except:
-            embed = Embed(title=" ",description=f":x: **{translate("error.generic", self.lang)}**", colour=15548997)
+            embed = Embed(title=" ",description=f":x: **{translate('error.generic', self.lang)}**", colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAIL) {interaction.user} failed to use the reject thumbnail form (could not remove the image)")
             return
@@ -74,11 +74,11 @@ class rejectThumbnailForm(Modal):
             with open("thumbnails.json", "w") as thumbnailsFile:
                 dump(json_dict, thumbnailsFile, indent=4)
         except:
-            embed = Embed(title=" ",description=f":x: **{translate("error.generic", self.lang)}**", colour=15548997)
+            embed = Embed(title=" ",description=f":x: **{translate('error.generic', self.lang)}**", colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAIL) {interaction.user} failed to use the reject thumbnail form (could not remove the thumbnail ID from the json file)")
             return
-        embed = Embed(title=" ",description=f"**``{levelID}`` {translate("w.reject.pastp", self.lang)}**", colour=5763719)
+        embed = Embed(title=" ",description=f"**``{levelID}`` {translate('w.reject.pastp', self.lang)}**", colour=5763719)
         await interaction.response.send_message(" ",embed=embed, ephemeral=True)
         add = ""
         if has_reason: add = " and gave a reason"
