@@ -19,9 +19,9 @@ def translate(value:str, language:str) -> str:
 
 def set_language(user_id:int, language:str):
     with open ("data/user_lang.json", "w") as lang_file:
-        user_lang[f'{user_id}'] = language
+        user_lang[f"{user_id}"] = language
         dump(user_lang, lang_file)
 
 def get_language(user_id:int) -> str:
-    if not f'{user_id}' in user_lang: set_language(user_id, "en_uk")
-    return user_lang[f'{user_id}']
+    if not f"{user_id}" in user_lang: set_language(user_id, "en_uk")
+    return user_lang[f"{user_id}"]

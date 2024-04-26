@@ -14,7 +14,7 @@ class rejectThumbnailForm(Modal):
         self.input_0.label = translate("thumb.reject.reason", lang)
         self.input_0.placeholder = translate("thumb.reject.reason.placeholder", lang)
         super().__init__(title=translate("thumb.reject.title", lang))
-    input_0 = TextInput(style=TextStyle.long, required=False)
+    input_0 = TextInput(label="",style=TextStyle.long, required=False)
     async def on_submit(self, interaction: Interaction):
         with open("thumbnails.json", "r") as thumbnailsFile:
             thumbnailsData = load(thumbnailsFile)
@@ -25,8 +25,8 @@ class rejectThumbnailForm(Modal):
 
         old_embed = message.embeds[0]
 
-        levelID = int(old_embed.title[old_embed.title.rfind('(')+1:old_embed.title.rfind(')')])
-        submissionAuthor = await self.client.fetch_user(int(old_embed.description[old_embed.description.rfind('(')+1:old_embed.description.rfind(')')]))
+        levelID = int(old_embed.title[old_embed.title.rfind("(")+1:old_embed.title.rfind(")")])
+        submissionAuthor = await self.client.fetch_user(int(old_embed.description[old_embed.description.rfind("(")+1:old_embed.description.rfind(")")]))
         
         has_reason = self.input_0.value == ""
         if submissionAuthor == None:
@@ -44,7 +44,7 @@ class rejectThumbnailForm(Modal):
         except:
             pass
 
-        embed = Embed(title=old_embed.title, description=f'{old_embed.description}', color=15548997)
+        embed = Embed(title=old_embed.title, description=f"{old_embed.description}", color=15548997)
         embed.set_image(url=old_embed.image.url)
         embed.set_footer(text=f"{self.client.user.name}", icon_url=f"{self.client.user.avatar}")
         embed.timestamp = old_embed.timestamp

@@ -81,8 +81,8 @@ def commandFunction(tree, client):
                 log(f"(FAILED) {interaction.user} FAILED to post a thumbnail (failed to fetch the level from the servers)")
                 return
 
-            levelName = req.text.split("2:")[1].split(':')[0]
-            levelAuthor = req.text.split('#')[1].split(':')[1]
+            levelName = req.text.split("2:")[1].split(":")[0]
+            levelAuthor = req.text.split("#")[1].split(":")[1]
 
             try:
                 with open(f"thumbnails/{level}.png", "wb") as f:

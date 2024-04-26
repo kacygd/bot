@@ -33,7 +33,7 @@ async def action(interaction:Interaction, message:Message, action:str, lang:str,
         log(f"(FAILED) {interaction.user} FAILED to {action} a thumbnail (wrong message)")
         return False
     
-    if not (old_embed.title[old_embed.title.rfind('(')+1:old_embed.title.rfind(')')].isdigit() and old_embed.description[old_embed.description.rfind('(')+1:old_embed.description.rfind(')')].isdigit()):
+    if not (old_embed.title[old_embed.title.rfind("(")+1:old_embed.title.rfind(")")].isdigit() and old_embed.description[old_embed.description.rfind("(")+1:old_embed.description.rfind(")")].isdigit()):
         embed = Embed(title=" ",description=f"**:x: {translate("error.msg.invalid", lang)}**",colour=15548997)
         await interaction.response.send_message(" ",embed=embed, ephemeral=True)
         log(f"(FAILED) {interaction.user} FAILED to {action} a thumbnail (invalid message)")
@@ -51,10 +51,10 @@ async def action(interaction:Interaction, message:Message, action:str, lang:str,
         log(f"(FAILED) {interaction.user} FAILED to {action} a thumbnail (already accepted)")
         return False
 
-    if int(old_embed.title[old_embed.title.rfind('(')+1:old_embed.title.rfind(')')]) not in thumbnails:
+    if int(old_embed.title[old_embed.title.rfind("(")+1:old_embed.title.rfind(")")]) not in thumbnails:
         embed = Embed(title=" ",description=f"**:x: {translate("context.error.submission.nonexist", lang)}**",colour=15548997)
         await interaction.response.send_message(" ",embed=embed, ephemeral=True)
-        embed = Embed(title=old_embed.title, description=f'{old_embed.description}', color=15548997)
+        embed = Embed(title=old_embed.title, description=f"{old_embed.description}", color=15548997)
         embed.set_image(url=old_embed.image.url)
         embed.set_footer(text=f"{client.user.name}", icon_url=f"{client.user.avatar}")
         embed.timestamp = old_embed.timestamp
@@ -62,10 +62,10 @@ async def action(interaction:Interaction, message:Message, action:str, lang:str,
         log(f"(FAILED) {interaction.user} FAILED to {action} a thumbnail (does not exist)")
         return False
     
-    if f"{old_embed.title[old_embed.title.rfind('(')+1:old_embed.title.rfind(')')]}.png" not in files:
+    if f"{old_embed.title[old_embed.title.rfind("(")+1:old_embed.title.rfind(")")]}.png" not in files:
         embed = Embed(title=" ",description=f"**:x: {translate("context.error.submission.expire", lang)}**",colour=15548997)
         await interaction.response.send_message(" ",embed=embed, ephemeral=True)
-        embed = Embed(title=old_embed.title, description=f'{old_embed.description}', color=15548997)
+        embed = Embed(title=old_embed.title, description=f"{old_embed.description}", color=15548997)
         embed.set_image(url=old_embed.image.url)
         embed.set_footer(text=f"{client.user.name}", icon_url=f"{client.user.avatar}")
         embed.timestamp = old_embed.timestamp

@@ -6,7 +6,7 @@ from json import load, dump
 from util.translate import *
 
 def get_embed(lang:str) -> Embed:
-    return Embed(title=translate("lang.select.title", lang),description=f'{translate("lang.select.current", lang)} **{translate("name", lang)}**\n\n{translate("lang.select.below", lang)}')
+    return Embed(title=translate("lang.select.title", lang),description=f"{translate("lang.select.current", lang)} **{translate("name", lang)}**\n\n{translate("lang.select.below", lang)}")
 class LButton(Button):
     def __init__(self, lang:str, dis:bool):
         super().__init__(label=translate("name",lang),emoji=translate("icon",lang),style=ButtonStyle.gray,disabled=dis)
