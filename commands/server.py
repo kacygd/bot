@@ -13,7 +13,8 @@ def commandFunction(tree, client):
             server = data["server"]
         lang = get_language(interaction.user.id)
         if interaction.user.id != 629711559899217950:
-            embed = Embed(title=" ",description=f"**:x: {translate("error.no_permission", lang)}**",colour=15548997)
+            translate:str = translate("error.no_permission", lang)
+            embed = Embed(title=" ",description=f"**:x: {translate}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to change the server (not allowed)")
             return
