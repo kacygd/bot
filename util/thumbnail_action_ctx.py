@@ -62,7 +62,7 @@ async def action(interaction:Interaction, message:Message, action:str, lang:str,
         log(f"(FAILED) {interaction.user} FAILED to {action} a thumbnail (does not exist)")
         return False
     
-    if f"{old_embed.title[old_embed.title.rfind("(")+1:old_embed.title.rfind(")")]}.png" not in files:
+    if f"{old_embed.title[old_embed.title.rfind('(')+1:old_embed.title.rfind(')')]}.png" not in files:
         embed = Embed(title=" ",description=f"**:x: {translate('context.error.submission.expire', lang)}**",colour=15548997)
         await interaction.response.send_message(" ",embed=embed, ephemeral=True)
         embed = Embed(title=old_embed.title, description=f"{old_embed.description}", color=15548997)
