@@ -15,13 +15,13 @@ def commandFunction(tree, client):
             verifiedThumbnailerRole = data["verifiedThumbnailerRole"]
         
             if interaction.guild.id != server:
-                embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.not_here', lang)}**",colour=15548997)
+                embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.not_here", lang)}**",colour=15548997)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to change the verified thumbnailer role (not allowed)")
                 return
         
             if role.id == verifiedThumbnailerRole:
-                embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.role.same', lang)}**",colour=15548997)
+                embed = Embed(title=" ",description=f"**:x: {translate("cmd.error.role.same", lang)}**",colour=15548997)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to change the verified thumbnailer role (same role)")
                 return
@@ -32,10 +32,10 @@ def commandFunction(tree, client):
                 try:
                     with open("specialConfig.json", "w") as specialConfigFile:
                         dump(data, specialConfigFile, indent=4)
-                    embed = Embed(title=" ",description=f"**:white_check_mark: {translate('cmd.thumb_role.success', lang)}** <@&{role.id}>**!**",colour=2067276)
+                    embed = Embed(title=" ",description=f"**:white_check_mark: {translate("cmd.thumb_role.success", lang)}** <@&{role.id}>**!**",colour=2067276)
                     await interaction.response.send_message(" ",embed=embed)
                     log(f"(SUCCESS) Verified thumbnailer role has been CHANGED")
                 except:
-                    embed = Embed(title=" ",description=f"**:x: {translate('error.generic', lang)}**",colour=15548997)
+                    embed = Embed(title=" ",description=f"**:x: {translate("error.generic", lang)}**",colour=15548997)
                     await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                     log(f"(FAILED) {interaction.user} FAILED to change the verified thumbnailer role (error when writing in specialConfig.json/when sending the success embed)")
