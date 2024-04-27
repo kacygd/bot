@@ -12,7 +12,7 @@ def commandFunction(tree, client):
             data = load(specialConfigFile)
             server = data["server"]
             thumbnailChannel = data["thumbnailsChannel"]
-            lang = get_language(interaction.user.id)
+            lang = get_language(interaction.user.id, interaction.locale.name)
         
             if interaction.guild.id != server:
                 embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.not_here', lang)}**",colour=15548997)

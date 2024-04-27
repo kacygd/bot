@@ -1,7 +1,7 @@
 from discord.ui import Modal, TextInput
 from discord import Embed, TextStyle, Interaction
 from util.functions import log
-from util.translate import translate, get_language
+from util.translate import translate, get_language_default
 from os import remove
 from requests import put
 from util.resources import GITHUB_TOKEN
@@ -51,7 +51,7 @@ class acceptThumbnailForm(Modal):
         if submissionAuthor == None:
             auth_lang = "en_uk"
         else:
-            auth_lang = get_language(submissionAuthor.id)
+            auth_lang = get_language_default(submissionAuthor.id)
         add = ""
         if has_reason: add = f"\n``{translate('w.notes.add', auth_lang)} {self.input_0.value}``"
         embed = Embed(title=f"**{translate('thumb.submission', auth_lang)} (ID: ``{levelID}``) {translate('w.accept.pastp', auth_lang)}**" + add,description="", colour=2067276)

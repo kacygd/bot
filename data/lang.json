@@ -2,6 +2,7 @@
     "en_uk": {
         "icon": "🇬🇧",
         "name": "English (UK)",
+        "default":["british_english","american_english"],
 
         "lang.select.title": "Language Select",
         "lang.select.current": "Your current language is:",
@@ -53,6 +54,7 @@
     "fr_fr": {
         "icon": "🇫🇷",
         "name": "Français (FR)",
+        "default": ["french"],
 
         "lang.select.title": "Séléctionner une langue",
         "lang.select.current": "Votre langue actuelle est :",
@@ -104,6 +106,7 @@
     "ru_ru": {
         "icon": "🇷🇺",
         "name": "Русский (RU)",
+        "default": ["russian"],
 		
         "lang.select.title": "Выбор языка",
         "lang.select.current": "Ваш текущий язык:",
@@ -154,6 +157,7 @@
     },
     "ua_ua": {
         "icon": "🇺🇦",
-        "name": "Українська (UA)"
+        "name": "Українська (UA)",
+        "default": ["ukrainian"]
     }
 }

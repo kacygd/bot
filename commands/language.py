@@ -24,5 +24,5 @@ class LView(View):
 def commandFunction(tree, client):
     @tree.command(name="language",description="Change your selected language")
     async def languageCommand(interaction: Interaction):
-        lang = get_language(interaction.user.id)
+        lang = get_language(interaction.user.id, interaction.locale.name)
         await interaction.response.send_message(embed=get_embed(lang),view=LView(lang),ephemeral=True)

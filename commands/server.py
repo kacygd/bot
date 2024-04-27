@@ -11,7 +11,7 @@ def commandFunction(tree, client):
         with open("specialConfig.json", "r") as specialConfigFile:
             data = load(specialConfigFile)
             server = data["server"]
-        lang = get_language(interaction.user.id)
+        lang = get_language(interaction.user.id, interaction.locale.name)
         if interaction.user.id != 629711559899217950:
             embed = Embed(title=" ",description=f"**:x: {translate('error.no_permission', lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)

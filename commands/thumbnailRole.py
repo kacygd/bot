@@ -9,7 +9,7 @@ def commandFunction(tree, client):
     @default_permissions(administrator=True)
     async def thumbnailRoleCommand(interaction: Interaction, role: Role):
         with open("specialConfig.json", "r") as specialConfigFile:
-            lang = get_language(interaction.user.id)
+            lang = get_language(interaction.user.id, interaction.locale.name)
             data = load(specialConfigFile)
             server = data["server"]
             verifiedThumbnailerRole = data["verifiedThumbnailerRole"]

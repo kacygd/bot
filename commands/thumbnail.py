@@ -10,7 +10,7 @@ from util.translate import get_language, translate
 def commandFunction(tree, client):
     @tree.command(name="thumbnail",description="Submit a thumbnail for an in-game level")
     async def thumbnailCommand(interaction: Interaction, level: int, image: Attachment):
-        lang = get_language(interaction.user.id)
+        lang = get_language(interaction.user.id, interaction.locale.name)
         with open("specialConfig.json", "r") as specialConfigFile:
             data = load(specialConfigFile)
             server = data["server"]

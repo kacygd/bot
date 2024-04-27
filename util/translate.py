@@ -22,6 +22,13 @@ def set_language(user_id:int, language:str):
         user_lang[f"{user_id}"] = language
         dump(user_lang, lang_file)
 
-def get_language(user_id:int) -> str:
-    if not f"{user_id}" in user_lang: set_language(user_id, "en_uk")
+def get_language(user_id:int, locale:str) -> str:
+    if not f"{user_id}" in user_lang: set_language(user_id, get_from_locale(locale))
     return user_lang[f"{user_id}"]
+def get_language_default(user_id:int) -> str:
+    return get_language(user_id, "british_english")
+def get_from_locale(locale:str) -> str:
+    for lang in lang_data.keys():
+        if locale in lang_data[lang]["default"]:
+            return lang
+    return "en_uk"
