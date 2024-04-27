@@ -17,16 +17,17 @@ def translate(value:str, language:str) -> str:
             log(f"(FAIL) Unable to translate {value}")
             return value
 
-def set_language(user_id:int, language:str):
+def set_language(user_id:int, language:str, auto:bool):
     with open ("data/user_lang.json", "w") as lang_file:
-        user_lang[f"{user_id}"] = language
+        user_lang[str(user_id)] = {"lang":language,"auto":auto}
         dump(user_lang, lang_file)
 
 def get_language(user_id:int, locale:str) -> str:
-    if not f"{user_id}" in user_lang: set_language(user_id, get_from_locale(locale))
-    return user_lang[f"{user_id}"]
+    if (not str(user_id) in user_lang) or (user_lang[str(user_id)]["auto"] and locale != None):
+        set_language(user_id, get_from_locale(locale), True)
+    return user_lang[str(user_id)]["lang"]
 def get_language_default(user_id:int) -> str:
-    return get_language(user_id, "british_english")
+    return get_language(user_id, None)
 def get_from_locale(locale:str) -> str:
     for lang in lang_data.keys():
         if locale in lang_data[lang]["default"]:

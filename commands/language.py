@@ -12,7 +12,7 @@ class LButton(Button):
         super().__init__(label=translate('name',lang),emoji=translate('icon',lang),style=ButtonStyle.gray,disabled=dis)
         self.lang = lang
     async def callback(self, interaction:Interaction):
-        set_language(interaction.user.id, self.lang)
+        set_language(interaction.user.id, self.lang, False)
         await interaction.response.edit_message(embed=get_embed(self.lang),view=LView(self.lang))
 
 class LView(View):
