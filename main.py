@@ -17,12 +17,12 @@ class aclient(Client):
     
     async def on_ready(self):
         if not self.synced:
-            await tree.sync()
+            #await tree.sync()
             self.synced = True
         print(f"Logged in as {self.user}.")
         await client.change_presence(activity=Activity(type=ActivityType.playing, name="PlusGDPS"))
         log(f"(SUCCESS) {self.user} has been STARTED. Ping: {round (client.latency * 1000)} ms")
-        await thumbnails_delete.start()
+        await thumbnails_delete_and_poll_lock.start()
         
 client = aclient()
 tree = CommandTree(client)
@@ -44,7 +44,24 @@ for command in listdir("context_menu"):
     commandObject.commandFunction(tree, client)
 
 @tasks.loop(minutes=1)
-async def thumbnails_delete():
+async def thumbnails_delete_and_poll_lock():
+    changed = False
+    with open("data/threads.json", "r") as file:
+        threads = load(file)["threads"]
+        max = len(threads)
+        i = 0
+        now = int(datetime.now().timestamp())
+        while(i < max):
+            thread = threads[i]
+            if(thread["time"] <= now):
+                threads.remove(thread)
+                await client.get_channel(thread["channel"]).get_thread(thread["thread"]).edit(locked=True)
+                max -= 1
+                changed = True
+            i += 1
+    if changed:
+        with open("data/threads.json", "w") as file:
+            dump({"threads":threads}, file)
     with open("thumbnails.json", "r") as thumbnailsFile:
         thumbnailsData = load(thumbnailsFile)
         thumbnails = thumbnailsData.get("thumbnails", [])

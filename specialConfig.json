@@ -1,6 +1,8 @@
 {
-    "server": 0,
+    "server": 846055725507149876,
     "databaseUrl": "",
     "thumbnailsChannel": 0,
-    "verifiedThumbnailerRole": 0
+    "verifiedThumbnailerRole": 0,
+    "pollChannel":0,
+    "pollRole":0
 }

@@ -13,6 +13,7 @@
         "thumb.reject.reason.placeholder": "Explain why the thumbnail was rejected (optional)",
         "thumb.submission": "Your thumbnail submission",
 
+        "w.answer": "Answer",
         "w.notes": "Notes",
         "w.reason": "Reason:",
         "w.notes.add": "Additional notes:",
@@ -26,6 +27,7 @@
         "error.msg.invalid": "Invalid message!",
         "error.server.fetch_level_fail": "Failed to fetch the level from the server!",
         "error.server.accept_thumb": "An error occurred while trying to post the thumbnail",
+        "cmd.error.invalid": "Invalid parameters!",
         "cmd.error.not_here": "You are not allowed to use this here!",
         "cmd.error.config": "This command has not yet been configured!",
         "cmd.error.thumb.already_suggested": "A thumbnail for this level has already been suggested!",
@@ -49,7 +51,10 @@
         "cmd.server.success": "Successfully set the new server to",
         "cmd.thumb_role.success": "Successfully set the new Verified Thumbnailer role to",
         "cmd.thumb_channel.success": "Successfully set the new thumbnail channel to",
-        "cmd.data_url.success": "Successfully set the new database URL to"
+        "cmd.data_url.success": "Successfully set the new database URL to",
+        "cmd.poll.success": "Successfully sent a poll",
+        "cmd.poll_role.success": "Successfully set the new Poll Create role to",
+        "cmd.poll_channel.success": "Successfully set the new poll channel to"
     },
     "fr_fr": {
         "icon": "🇫🇷",
