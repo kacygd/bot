@@ -108,7 +108,7 @@ def commandFunction(tree, client):
                 try:
                     with open("specialConfig.json", "w") as specialConfigFile:
                         dump(data, specialConfigFile, indent=4)
-                    embed = Embed(title=" ",description=f"**:white_check_mark: {translate('cmd.poll_channel.success', lang)}** <#{pollChannel}>!",colour=2067276)
+                    embed = Embed(title=" ",description=f"**:white_check_mark: {translate('cmd.poll_channel.success', lang)}** <#{channel.id}>!",colour=2067276)
                     await interaction.response.send_message(" ",embed=embed)
                     log(f"(SUCCESS) Poll Channel has been CHANGED")
                 except:
