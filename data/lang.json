@@ -54,7 +54,8 @@
         "cmd.data_url.success": "Successfully set the new database URL to",
         "cmd.poll.success": "Successfully sent a poll",
         "cmd.poll_role.success": "Successfully set the new Poll Create role to",
-        "cmd.poll_channel.success": "Successfully set the new poll channel to"
+        "cmd.poll_channel.success": "Successfully set the new poll channel to",
+        "cmd.poll_config.success": "Successfully set the new poll config!"
     },
     "fr_fr": {
         "icon": "🇫🇷",

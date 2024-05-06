@@ -17,7 +17,7 @@ class aclient(Client):
     
     async def on_ready(self):
         if not self.synced:
-            #await tree.sync()
+            await tree.sync()
             self.synced = True
         print(f"Logged in as {self.user}.")
         await client.change_presence(activity=Activity(type=ActivityType.playing, name="PlusGDPS"))

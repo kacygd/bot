@@ -134,13 +134,17 @@ def commandFunction(tree, client):
 
 
     @group.command(name="channel",description="Change the thumbnail channel")
-    @default_permissions(administrator=True)
     async def thumbnailChannel(interaction: Interaction, channel: TextChannel = None, thread: Thread = None):
+        lang = get_language(interaction.user.id, interaction.locale.name)
+        if not interaction.user.guild_permissions.administrator:
+            embed = Embed(title=" ",description=f"**:x: {translate('error.no_permission', lang)}**",colour=15548997)
+            await interaction.response.send_message(" ",embed=embed, ephemeral=True)
+            log(f"(FAILED) {interaction.user} FAILED to change the thumbnail channel (not allowed)")
+            return
         with open("specialConfig.json", "r") as specialConfigFile:
             data = load(specialConfigFile)
             server = data["server"]
             thumbnailChannel = data["thumbnailsChannel"]
-            lang = get_language(interaction.user.id, interaction.locale.name)
         
             if interaction.guild.id != server:
                 embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.not_here', lang)}**",colour=15548997)
@@ -194,10 +198,14 @@ def commandFunction(tree, client):
 
 
     @group.command(name="role",description="Change the thumbnail role")
-    @default_permissions(administrator=True)
     async def thumbnailRole(interaction: Interaction, role: Role):
+        lang = get_language(interaction.user.id, interaction.locale.name)
+        if not interaction.user.guild_permissions.administrator:
+            embed = Embed(title=" ",description=f"**:x: {translate('error.no_permission', lang)}**",colour=15548997)
+            await interaction.response.send_message(" ",embed=embed, ephemeral=True)
+            log(f"(FAILED) {interaction.user} FAILED to change the thumbnail role (not allowed)")
+            return
         with open("specialConfig.json", "r") as specialConfigFile:
-            lang = get_language(interaction.user.id, interaction.locale.name)
             data = load(specialConfigFile)
             server = data["server"]
             verifiedThumbnailerRole = data["verifiedThumbnailerRole"]
