@@ -43,11 +43,11 @@ class pollModal(Modal):
         self.input_2.label = answer + " 3"
         self.input_3.label = answer + " 4"
         self.input_4.label = answer + " 5"
-        self.input_0.value = placeholders[0]
-        self.input_1.value = placeholders[1]
-        self.input_2.value = placeholders[2]
-        self.input_3.value = placeholders[3]
-        self.input_4.value = placeholders[4]
+        self.input_0.default = placeholders[0]
+        self.input_1.default = placeholders[1]
+        self.input_2.default = placeholders[2]
+        self.input_3.default = placeholders[3]
+        self.input_4.default = placeholders[4]
         super().__init__(title=title)
     input_0 = TextInput(label="",style=TextStyle.short, required=True)
     input_1 = TextInput(label="",style=TextStyle.short, required=True)
