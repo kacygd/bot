@@ -133,18 +133,19 @@ def commandFunction(tree, client):
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to change the poll config (not allowed)")
                 return
-            else:
-                if message != None: data["pollMessage"] = message
-                if placeholder1 != None: data["placeholder1"] = placeholder1
-                if placeholder2 != None: data["placeholder2"] = placeholder2
-                if placeholder3 != None: data["placeholder3"] = placeholder3
-                if placeholder4 != None: data["placeholder4"] = placeholder4
-                if placeholder5 != None: data["placeholder5"] = placeholder5
+            if message != None: data["pollMessage"] = message
+            if placeholder1 != None: data["placeholder1"] = placeholder1
+            if placeholder2 != None: data["placeholder2"] = placeholder2
+            if placeholder3 != None: data["placeholder3"] = placeholder3
+            if placeholder4 != None: data["placeholder4"] = placeholder4
+            if placeholder5 != None: data["placeholder5"] = placeholder5
+            try:
                 with open("specialConfig.json", "w") as specialConfigFile:
                     dump(data, specialConfigFile, indent=4)
                 embed = Embed(title=" ",description=f"**:white_check_mark: {translate('cmd.poll_config.success', lang)}**",colour=2067276)
                 await interaction.response.send_message(" ",embed=embed)
                 log(f"(SUCCESS) Poll message has been CHANGED")
+            except:
                 embed = Embed(title=" ",description=f"**:x: {translate('error.generic', lang)}**",colour=15548997)
                 await interaction.response.send_message(" ",embed=embed, ephemeral=True)
                 log(f"(FAILED) {interaction.user} FAILED to change the poll config (error when writing in specialConfig.json/when sending the success embed)")
