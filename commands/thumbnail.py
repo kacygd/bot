@@ -9,7 +9,7 @@ from util.translate import get_language, translate
 from discord.app_commands import Group, default_permissions
 
 def commandFunction(tree, client):
-    group = Group(name="poll",description="Manage and submit thumbnails")
+    group = Group(name="thumbnail",description="Manage and submit thumbnails")
 
     @group.command(name="submit",description="Submit a thumbnail for an in-game level")
     async def thumbnailCommand(interaction: Interaction, level: int, image: Attachment):
