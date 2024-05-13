@@ -45,20 +45,35 @@ for command in listdir("context_menu"):
 
 @tasks.loop(minutes=1)
 async def thumbnails_delete_and_poll_lock():
+    try:
+        await bg_task()
+    except:
+        log("(ERROR) An error occurred in task loop")
+async def bg_task():
     changed = False
     with open("data/threads.json", "r") as file:
-        threads = load(file)["threads"]
-        max = len(threads)
-        i = 0
-        now = int(datetime.now().timestamp())
+        try:
+            threads = load(file)["threads"]
+            max = len(threads)
+            i = 0
+            now = int(datetime.now().timestamp())
+        except:
+            log("(ERROR) Error when initializing threads data")
+            return
         while(i < max):
-            thread = threads[i]
-            if(thread["time"] <= now):
-                threads.remove(thread)
-                await client.get_channel(thread["channel"]).get_thread(thread["thread"]).edit(locked=True)
-                max -= 1
-                changed = True
-            i += 1
+            try:
+                thread = threads[i]
+                if (not "time" in thread.keys()) or thread["time"] <= now:
+                    threads.remove(thread)
+                    changed = True
+                    max -= 1
+                    try:
+                        await client.get_channel(thread["channel"]).get_thread(thread["thread"]).edit(locked=True)
+                    except:
+                        log(f"(ERROR) Unable to lock thread {thread["thread"]} in channel {thread["channel"]}")
+                i += 1
+            except:
+                log(f"(ERROR) Error in thread #{i}      ({threads})")
     if changed:
         with open("data/threads.json", "w") as file:
             dump({"threads":threads}, file)

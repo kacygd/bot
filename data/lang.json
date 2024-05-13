@@ -22,7 +22,7 @@
         "w.accept.pastp": "has been accepted!",
         "w.reject.pastp": "has been rejected!",
 
-        "error.generic": "An error occured",
+        "error.generic": "An error occurred",
         "error.no_permission": "You are not allowed to use this!",
         "error.url.invalid": "Invalid URL!",
         "error.msg.invalid": "Invalid message!",
