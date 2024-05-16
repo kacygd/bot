@@ -109,7 +109,11 @@
         "cmd.server.success": "Le serveur a été changé à",
         "cmd.thumb_role.success": "Le nouveau rôle \"Verified Thumbnailer\" est désormais",
         "cmd.thumb_channel.success": "Le nouveau salon pour les suggestions est désormais",
-        "cmd.data_url.success": "La nouvelle URL de la database est désormais"
+        "cmd.data_url.success": "La nouvelle URL de la database est désormais",
+        "cmd.poll.success": "Sondage créé avec succès",
+        "cmd.poll_role.success": "Le nouveau rôle de créateur de sondage est désormais",
+        "cmd.poll_channel.success": "Le nouveau salon où les sondages se dérouleront est désormais",
+        "cmd.poll_config.success": "Paramètres enregistrés avec succès !"
     },
     "ru_ru": {
         "icon": "🇷🇺",
@@ -162,7 +166,11 @@
         "cmd.server.success": "Вы успешно изменили сервер на",
         "cmd.thumb_role.success": "Вы успешно выдали роль \"Verified Thumbnailer\"",
         "cmd.thumb_channel.success": "Вы успешно установили канал для превью на",
-        "cmd.data_url.success": "Вы успешно установили ссылку на сервер:"
+        "cmd.data_url.success": "Вы успешно установили ссылку на сервер:",
+        "cmd.poll.success": "Опрос был успешно отправлен",
+        "cmd.poll_role.success": "Вы успешно установили роль для создания опросов:",
+        "cmd.poll_channel.success": "Вы успешно установили канал для опросов:",
+        "cmd.poll_config.success": "Вы успешно изменили конфигурацию опросов!"
     },
     "ua_ua": {
         "icon": "🇺🇦",
