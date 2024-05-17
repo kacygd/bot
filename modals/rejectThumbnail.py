@@ -28,7 +28,7 @@ class rejectThumbnailForm(Modal):
         levelID = int(old_embed.title[old_embed.title.rfind("(")+1:old_embed.title.rfind(")")])
         submissionAuthor = await self.client.fetch_user(int(old_embed.description[old_embed.description.rfind("(")+1:old_embed.description.rfind(")")]))
         
-        has_reason = self.input_0.value == ""
+        has_reason = self.input_0.value != ""
         if submissionAuthor == None:
             auth_lang = "en_uk"
         else:
