@@ -26,7 +26,7 @@ class acceptThumbnailForm(Modal):
 
         levelID = int(old_embed.title[old_embed.title.rfind("(")+1:old_embed.title.rfind(")")])
         submissionAuthor = await self.client.fetch_user(int(old_embed.description[old_embed.description.rfind("(")+1:old_embed.description.rfind(")")]))
-        has_reason = self.input_0.value == ""
+        has_reason = self.input_0.value != ""
         with open(f"thumbnails/{levelID}.png", "rb") as thumbnailFile:
             thumbnail = thumbnailFile.read()
 
