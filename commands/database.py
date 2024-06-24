@@ -5,7 +5,7 @@ from json import load, dump
 from util.translate import get_language, translate
 
 def commandFunction(tree, client):
-    @tree.command(name="database",description="Change the database url of PlusGDPS (e.g.: https://gmd.pluscraft.fr/database)")
+    @tree.command(name="database",description="Change the database url of PlusGDPS (e.g.: https://gmd.plusgdps.dev/database)")
     @default_permissions(administrator=True)
     async def databaseCommand(interaction: Interaction, url: str):
         with open("specialConfig.json", "r") as specialConfigFile:
