@@ -453,5 +453,5 @@
         "cmd.poll_role.success": "Impostato il nuovo rolo Poll Create con successo a ",
         "cmd.poll_channel.success": "Impostato il nuovo canale dei sondaggi con successo a ",
         "cmd.poll_config.success": "Configurati i sondaggi con successo!"
-    },
+    }
 }
