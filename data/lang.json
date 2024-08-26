@@ -229,7 +229,7 @@
         "icon": "🇻🇦",
         "name": "Latinus (??)",
         "experimental": true,
-        "default": ["latin"],
+        "default": [],
 
         "lang.select.title": "Electio linguae",
         "lang.select.current": "Lingua tua haec est:",
