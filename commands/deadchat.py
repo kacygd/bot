@@ -49,5 +49,5 @@ def commandFunction(tree, client):
         with open(timestamp_file, "w") as file:
             dump({"last_ping": current_time}, file)
 
-        await interaction.response.send_message(f"<@{deadChatRole}>")
+        await interaction.response.send_message(f"<@&{deadChatRole}>")
     tree.add_command(group)
