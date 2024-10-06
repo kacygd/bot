@@ -24,6 +24,7 @@
 
         "error.generic": "An error occurred",
         "error.no_permission": "You are not allowed to use this!",
+        "cmd.error.cooldown": "This command is on cooldown!",
         "error.url.invalid": "Invalid URL!",
         "error.msg.invalid": "Invalid message!",
         "error.server.fetch_level_fail": "Failed to fetch the level from the server!",
@@ -82,6 +83,7 @@
 
         "error.generic": "Une erreur s'est produite",
         "error.no_permission": "Vous n'avez pas le droit d'utiliser ceci !",
+        "cmd.error.cooldown": "Cette commande est temporairement désactivé !",
         "error.url.invalid": "URL invalide !",
         "error.msg.invalid": "Message invalide !",
         "error.server.fetch_level_fail": "Une erreur s'est produite lors du téléchargement du niveau !",
@@ -139,6 +141,7 @@
 
         "error.generic": "Произошла ошибка",
         "error.no_permission": "У вас нет прав на использование этого!",
+        "cmd.error.cooldown": "Подождите немного перед тем, как использовать эту команду вновь!",
         "error.url.invalid": "Некорректная ссылка!",
         "error.msg.invalid": "Некорректное сообщение!",
         "error.server.fetch_level_fail": "Не удалось загрузить уровень с сервера!",
@@ -196,6 +199,7 @@
 
         "error.generic": "Сталась помилка",
         "error.no_permission": "Тобі не можна використовувати це!",
+        "cmd.error.cooldown": "This command is on cooldown!",
         "error.url.invalid": "недійсна URL-адреса!",
         "error.msg.invalid": "Недійсне повідомлення!",
         "error.server.fetch_level_fail": "Не вдалося отримати рівень із сервера!",
@@ -249,6 +253,7 @@
 
         "error.generic": "Vitium veni!",
         "error.no_permission": "Hic tibi non licet est!",
+        "cmd.error.cooldown": "This command is on cooldown!",
         "error.url.invalid": "URL invalidus!",
         "error.msg.invalid": "Nuntius invalidus!",
         "error.server.fetch_level_fail": "Failed to fetch the level from the server!",
@@ -308,6 +313,7 @@
 
         "error.generic": "A Fähler isch ufgträta",
         "error.no_permission": "Du dörfsch das nit benutze!",
+        "cmd.error.cooldown": "This command is on cooldown!",
         "error.url.invalid": "Ungültigi URL!",
         "error.msg.invalid": "Ungültigi Nochricht!",
         "error.server.fetch_level_fail": "Ds Level vum Server z hole isch gscheitert!",
@@ -366,6 +372,7 @@
 
         "error.generic": "Ocurrió un error",
         "error.no_permission": "¡No tienes permiso para usar esto!",
+        "cmd.error.cooldown": "This command is on cooldown!",
         "error.url.invalid": "¡URL inválida!",
         "error.msg.invalid": "¡Mensaje inválido!",
         "error.server.fetch_level_fail": "¡Error al obtener el nivel desde el servidor!",
@@ -420,6 +427,7 @@
 
         "error.generic": "Si è verificato un errore",
         "error.no_permission": "Non è consentito utilizzare questo!",
+        "cmd.error.cooldown": "This command is on cooldown!",
         "error.url.invalid": "URL invalido!",
         "error.msg.invalid": "Messaggio invalido!",
         "error.server.fetch_level_fail": "Impossibile recuperare il livello dal server!",
@@ -479,6 +487,7 @@
 
         "error.generic": "Tekkis viga",
         "error.no_permission": "Sul pole luba seda kasutada!",
+        "cmd.error.cooldown": "This command is on cooldown!",
         "error.url.invalid": "Kehtetu URL!",
         "error.msg.invalid": "Kehtetu sõnum!",
         "error.server.fetch_level_fail": "Ei saanud esile tuua seda levelit serverist.",
