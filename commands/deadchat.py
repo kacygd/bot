@@ -22,7 +22,7 @@ def commandFunction(tree, client):
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to use /dead chat (not allowed)")
             return
-        if deadChatAllowedRole == 0 or deadChatRole == 0:
+        if deadChatAllowedRole == 0 or deadChatAllowedChannel == 0 or deadChatRole == 0:
             embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.config', lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to use /poll (not configured)")
