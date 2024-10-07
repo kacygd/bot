@@ -15,6 +15,7 @@ def commandFunction(tree, client):
             data = load(specialConfigFile)
             server = data["server"]
             deadChatAllowedRole = data["deadChatAllowedRole"]
+            deadChatAllowedChannel = data["deadChatAllowedChannel"]
             deadChatRole = data["deadChatRole"]
         if interaction.guild.id != server:
             embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.not_here', lang)}**",colour=15548997)
@@ -25,6 +26,11 @@ def commandFunction(tree, client):
             embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.config', lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to use /poll (not configured)")
+            return
+        if interaction.channel.id != deadChatAllowedChannel:
+            embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.not_here', lang)}**",colour=15548997)
+            await interaction.response.send_message(" ",embed=embed, ephemeral=True)
+            log(f"(FAILED) {interaction.user} FAILED to use /dead chat (not allowed in this channel)")
             return
         if interaction.user.get_role(deadChatAllowedRole) == None:
             embed = Embed(title=" ",description=f"**:x: {translate('error.no_permission', lang)}**",colour=15548997)
@@ -48,6 +54,8 @@ def commandFunction(tree, client):
 
         with open(timestamp_file, "w") as file:
             dump({"last_ping": current_time}, file)
-
-        await interaction.response.send_message(f"<@&{deadChatRole}>")
+            
+        await interaction.channel.send(f"<@&{deadChatRole}>")
+        await interaction.response.send_message(f"<@!{interaction.user.id}> revived the chat from the dead!")
+        log(f"(SUCCESS) Pinged dead chat!")
     tree.add_command(group)
