@@ -11,7 +11,7 @@
     "placeholder3": "",
     "placeholder4": "",
     "placeholder5": "",
-    "deadChatAllowedRole": 0,
+    "deadChatAllowedRole": [0],
     "deadChatAllowedChannel": 0,
     "deadChatRole": 0
 }
