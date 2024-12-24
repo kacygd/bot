@@ -14,7 +14,7 @@ def commandFunction(tree, client):
         with open("specialConfig.json", "r") as specialConfigFile:
             data = load(specialConfigFile)
             server = data["server"]
-            deadChatAllowedRole = data["deadChatAllowedRole"]
+            deadChatAllowedRoles = data["deadChatAllowedRoles"]
             deadChatAllowedChannel = data["deadChatAllowedChannel"]
             deadChatRole = data["deadChatRole"]
         if interaction.guild.id != server:
@@ -22,7 +22,7 @@ def commandFunction(tree, client):
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to use /dead chat (not allowed)")
             return
-        if deadChatAllowedRole == 0 or deadChatAllowedChannel == 0 or deadChatRole == 0:
+        if deadChatAllowedRoles == 0 or deadChatAllowedChannel == 0 or deadChatRole == 0:
             embed = Embed(title=" ",description=f"**:x: {translate('cmd.error.config', lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to use /poll (not configured)")
@@ -32,7 +32,7 @@ def commandFunction(tree, client):
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to use /dead chat (not allowed in this channel)")
             return
-        if interaction.user.get_role(deadChatAllowedRole) == None:
+        if not any(role.id in deadChatAllowedRoles for role in interaction.user.roles):
             embed = Embed(title=" ",description=f"**:x: {translate('error.no_permission', lang)}**",colour=15548997)
             await interaction.response.send_message(" ",embed=embed, ephemeral=True)
             log(f"(FAILED) {interaction.user} FAILED to use /dead chat (not allowed)")
@@ -40,7 +40,7 @@ def commandFunction(tree, client):
         
         timestamp_file = "deadchat_timestamp.json"
         current_time = time()
-        time_limit = 3600 # seconds
+        time_limit = 21600 # seconds
 
         if exists(timestamp_file):
             with open(timestamp_file, "r") as file:
