@@ -3,8 +3,9 @@
     "name": "Українська (UA)",
     "experimental": false,
     "default": ["ukrainian"],
-    "credit": null,
+    "credit": "<@553105447746535436>",
 
+    "lang.translator": "Translated by",
     "lang.select.title": "Вибір мови",
     "lang.select.current": "Твоя мова зараз:",
     "lang.select.below": "Натисни кнопку нижче щоб обрати іншу мову",

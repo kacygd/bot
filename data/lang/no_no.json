@@ -4,8 +4,9 @@
         "name": "språk (NO)",
         "experimental": false,
         "default": ["norwegian"],
-        "credit": null,
-
+        "credit": "<@764523821826048001>",
+        
+        "lang.translator": "Oversetted",
         "lang.select.title": "Velg språk",
         "lang.select.current": "Ditt språk er:",
         "lang.select.below": "Trykk på knappane under får å velge ein anner",

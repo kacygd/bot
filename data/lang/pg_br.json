@@ -3,8 +3,9 @@
     "name": "Portuguese (BR)",
     "experimental": false,
     "default": ["brazil_portuguese"],
-    "credit": null,
+    "credit": "<@1245508486893408362>",
 
+    "lang.translator": "Translated by",
     "lang.select.title": "Seleção de Idioma",
     "lang.select.current": "Seu idioma atual é:",
     "lang.select.below": "Clique nos botões abaixo para selecionar outro",

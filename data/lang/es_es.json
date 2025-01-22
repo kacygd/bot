@@ -3,8 +3,9 @@
     "name": "Spanish (ES)",
     "experimental": false,
     "default": ["spain_spanish"],
-    "credit": null,
+    "credit": "<@401472259128164353>",
 
+    "lang.translator": "Translated by",
     "lang.select.title": "Selección de Idioma",
     "lang.select.current": "Tu idioma actual es:",
     "lang.select.below": "Haz clic en los botones a continuación para seleccionar uno diferente",

@@ -3,8 +3,9 @@
     "name": "Eesti (EE)",
     "experimental": false,
     "default": [],
-    "credit": null,
+    "credit": "<@652850600794521600>",
 
+    "lang.translator": "Translated by",
     "lang.select.title": "Keelevalik",
     "lang.select.current": "Sinu praegune keel on:",
     "lang.select.below": "Vajuta all olevatele nuppudele, et valida muu keel",

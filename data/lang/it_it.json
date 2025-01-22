@@ -5,6 +5,7 @@
     "default": ["italian"],
     "credit": null,
 
+    "lang.translator": "Translated by",
     "lang.select.title": "Selezione della lingua",
     "lang.select.current": "La tua lingua attuale è:",
     "lang.select.below": "Fare clic sui pulsanti sottostanti per selezionarne una diversa",

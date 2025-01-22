@@ -3,8 +3,9 @@
     "name": "Tagalog (PH)",
     "experimental": false,
     "default": [],
-    "credit": null,
+    "credit": "<@976439942186143744>",
 
+    "lang.translator": "Translated by",
     "lang.select.title": "Pumili ng wika",
     "lang.select.current": "Ang kasalukuyang wika ay:",
     "lang.select.below": "I-click ang button sa baba para pumili ng iba pa",
