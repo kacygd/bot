@@ -4,8 +4,9 @@
     "name": "Русский (RU)",
     "experimental": false,
     "default": ["russian"],
-    "credit": null,
+    "credit": "<@297295491417505793>",
 
+    "lang.translator": "Переведено",
     "lang.select.title": "Выбор языка",
     "lang.select.current": "Ваш текущий язык:",
     "lang.select.below": "Нажмите на кнопки ниже, чтобы выбрать другой",
