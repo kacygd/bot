@@ -1,0 +1,58 @@
+{
+    "icon": "🇸🇦",
+    "name": "Arabic (AR)",
+    "experimental": false,
+    "default": [],
+    "credit": null,
+
+    "lang.select.title": "اختيار اللغة",
+    "lang.select.current": "لغتك الحالية هي:",
+    "lang.select.below": "اضغت على الأزرار لتغير اللغة",
+    "thumb.accept.title": "قبول الصورة",
+    "thumb.reject.title": "رفض الصورة",
+    "thumb.reject.reason": "سبب الرفض",
+    "thumb.reject.reason.placeholder": "سبب رفض الصورة (اختياري)",
+    "thumb.submission": "الصورة المقدمة",
+    "w.answer": "الرد",
+    "w.notes": "ملاحظات",
+    "w.reason": "السبب:",
+    "w.notes.add": "ملاحظات اضافية:",
+    "w.notes.additional": "اي ملاحظات اضافية؟",
+    "w.accept.pastp": "تم قبوله بنجاح!",
+    "w.reject.pastp": "تم رفضه!",
+    "error.generic": "حدث خطأ ما",
+    "error.no_permission": "ليس لديك إذن لهذا!",
+    "cmd.error.cooldown": "على مهلك!",
+    "error.url.invalid": "الرابط غير صحيح!",
+    "error.msg.invalid": "الرسالة غير صحيحة!",
+    "error.server.fetch_level_fail": "حدث خطأ! لم اتمكن من وجود المرحلة في السيرفر!",
+    "error.server.accept_thumb": "حدث خطأ في رفع الصورة!",
+    "cmd.error.invalid": "النطاق غير صحيح!",
+    "cmd.error.not_here": "لا يمكنك استخدام هذا هنا!",
+    "cmd.error.config": "لم يتم وضع اعدادات لهذا الأمر!",
+    "cmd.error.thumb.already_suggested": "لقد تم اقتراح صورة لهذه المرحلة مسبقاً!",
+    "cmd.error.image.not_png": "هذه الصورة ليست png!",
+    "cmd.error.image.malformed": "يوجد خلل في الصورة!",
+    "cmd.error.image.under_1920x1080": "الصورة اقل من 1920x1080!",
+    "cmd.error.image.not_16b9": "هذه الصورة ليست 16:9!",
+    "cmd.error.server.same": "هذا ليس نفس السيرفر!",
+    "cmd.error.role.same": "هذا لنفس الدور!",
+    "cmd.error.url.same": "هذا لنفس الرابط!",
+    "cmd.error.channel.same": "هذه نفس القناة!",
+    "cmd.error.channel.none": "ارجوك اختار قناة واحدة!",
+    "cmd.error.channel.two": "ارجوك اختار قناة واحدة وليس اكثر!",
+    "context.error.not_by_bot": "هذه ليست رسالة من البوت!",
+    "context.error.already_rejected": "لقد تم رفض هذا الطلب مسبقاً!",
+    "context.error.already_accepted": "لقد تم قبول هذا الطلب مسبقاً!",
+    "context.error.submission.nonexist": "لا يوجد طلب!",
+    "context.error.submission.expire": "لقد انتهى وقت هذا الطلب!",
+    "cmd.thumb.success": "تم نشر الصورة بنجاح!",
+    "cmd.server.success": "تم وضع السيرفر بنجاح:",
+    "cmd.thumb_role.success": "تم وضع دور ناشر الصور الموثوق إلى:",
+    "cmd.thumb_channel.success": "تم اختيار قناة الصور:",
+    "cmd.data_url.success": "تم اختيار رابط التخزين:",
+    "cmd.poll.success": "تم نشر التصويت بنجاح",
+    "cmd.poll_role.success": "تم وضع دور صانع التصويت إلى:",
+    "cmd.poll_channel.success": "تم وضع قناة التصويت إلى:",
+    "cmd.poll_config.success": "تم وضع نظام التصويت بنجاح!"
+}

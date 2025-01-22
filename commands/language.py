@@ -9,9 +9,14 @@ def ifExp(lang:str) -> str:
     if translate("experimental", lang):
         return "\nTHIS LANGUAGE IS **EXPERIMENTAL** AND MAY CONTAIN **TRANSLATION ERRORS**"
     return ""
+def ifCredit(lang:str) -> str:
+    credit = translate("credit", lang)
+    if credit is None:
+        return ""
+    return f"\n{translate('lang.translator', lang)} {credit}"
 
 def get_embed(lang:str) -> Embed:
-    return Embed(title=translate('lang.select.title', lang),description=f"{translate('lang.select.current', lang)} **{translate('name', lang)}**{ifExp(lang)}\n\n{translate('lang.select.below', lang)}")
+    return Embed(title=translate('lang.select.title', lang),description=f"{translate('lang.select.current', lang)} **{translate('name', lang)}**{ifCredit(lang)}{ifExp(lang)}\n\n{translate('lang.select.below', lang)}")
 class LButton(Button):
     def __init__(self, lang:str, dis:bool):
         super().__init__(label=translate('name',lang),emoji=translate('icon',lang),style=ButtonStyle.gray,disabled=dis)

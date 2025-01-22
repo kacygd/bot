@@ -1,7 +1,7 @@
 from discord import Client, Intents, ActivityType, Activity
 from discord.app_commands import CommandTree
 from util.resources import TOKEN
-from util.functions import log 
+from util.functions import log
 from os import listdir, remove
 from os.path import isfile, join, getmtime, splitext
 from discord.ext import tasks

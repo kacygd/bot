@@ -1,10 +1,24 @@
 from json import load, dump
 from util.functions import log
+import os
 
-with open ("data/lang.json", "r", encoding="utf8") as lang_file:
-    lang_data = load(lang_file)
-with open ("data/user_lang.json", "r") as user_lang_file:
-    user_lang = load(user_lang_file)
+user_lang = {}
+lang_data = {}
+
+def initialize():
+    files = os.listdir("data/lang")
+    for file in files:
+        if not os.path.isfile("data/lang/" + file):
+            continue
+        fs = file.split(".")
+        if not fs[1] == "json":
+            continue
+        with open("data/lang/" + file, "r", encoding="utf8") as lang_file:
+            lang_data[fs[0]] = load(lang_file)
+    with open ("data/user_lang.json", "r") as user_lang_file:
+        user_lang = load(user_lang_file)
+
+initialize()
 
 def translate(value:str, language:str) -> str:
     try:
