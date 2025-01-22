@@ -3,9 +3,9 @@
     "name": "Italiano (IT)",
     "experimental": false,
     "default": ["italian"],
-    "credit": null,
+    "credit": "<@968926508561334384>",
 
-    "lang.translator": "Translated by",
+    "lang.translator": "Tradotto da",
     "lang.select.title": "Selezione della lingua",
     "lang.select.current": "La tua lingua attuale è:",
     "lang.select.below": "Fare clic sui pulsanti sottostanti per selezionarne una diversa",
