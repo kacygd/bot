@@ -3,8 +3,9 @@
     "name": "Arabic (AR)",
     "experimental": false,
     "default": [],
-    "credit": null,
+    "credit": "<@786196620139561001>",
 
+    "lang.translator": "المترجم",
     "lang.select.title": "اختيار اللغة",
     "lang.select.current": "لغتك الحالية هي:",
     "lang.select.below": "اضغت على الأزرار لتغير اللغة",
