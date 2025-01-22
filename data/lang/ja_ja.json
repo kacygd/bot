@@ -5,7 +5,7 @@
     "default": ["japanese"],
     "credit": "<@1186822038640394301>",
 
-    "lang.translator": "Translated by",
+    "lang.translator": "翻訳",
     "lang.select.title": "言語選択 ",
     "lang.select.current": "現在の言語は：",
     "lang.select.below": "下のボタンをクリックして、別の言語を選択する",
